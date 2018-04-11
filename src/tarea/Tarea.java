@@ -19,6 +19,7 @@ public class Tarea {
     loadArray("estudiantes.csv");
    }
    public static void loadArray(String csvFile){
+    //Codigo para leer archivos csv.
     BufferedReader br = null;
     String line = "";
     //Se define separador ","
