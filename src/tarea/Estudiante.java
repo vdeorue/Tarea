@@ -10,15 +10,25 @@ package tarea;
  * @author Vicente
  */
 public class Estudiante {
-    String nombre;
-    String carrera;
-    int rut;
-    public Estudiante(int r, String n,String c){
-    rut = r;
-    nombre = n;
-    carrera = c;
-}
-    public void display(){
-        System.out.println(nombre + "-"+rut+"-"+carrera);
-    }
+    private String nombre;
+	private String carrera;
+	private String rut;
+	
+	public Estudiante(String r, String n, String c) {
+		rut = r;
+		nombre = n;
+		carrera = c;
+	}
+	
+	public void display() {
+		System.out.println(nombre + " - " + rut + " - " + carrera);
+	}
+	
+	public long getRut() {
+		if(rut.contains("K")) {
+			rut = rut.replace("K", "0");
+		}
+		
+		return Long.valueOf(rut);
+	}
 }
