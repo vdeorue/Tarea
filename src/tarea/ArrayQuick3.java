@@ -14,13 +14,13 @@ public class ArrayQuick3
    private long[] theArray;          // ref to array theArray
    private int nElems;               // number of data items
 //--------------------------------------------------------------
-   public ArrayQuick3(int max)          // constructor
+   public QuickSort(int max)          // constructor
       {
-      theArray = new long[max];      // create the array
+      theArray = new Estudiante[max];      // create the array
       nElems = 0;                    // no items yet
       }
 //--------------------------------------------------------------
-   public void insert(long value)    // put element into array
+   public void insert(Estudiante value)    // put element into array
       {
       theArray[nElems] = value;      // insert it
       nElems++;                      // increment size
@@ -28,9 +28,9 @@ public class ArrayQuick3
 //--------------------------------------------------------------
    public void display()             // displays array contents
       {
-      System.out.print("A=");
       for(int j=0; j<nElems; j++)    // for each element,
-         System.out.print(theArray[j] + " ");  // display it
+    	  theArray[j].display();  // display it
+      System.out.println("");
       System.out.println("");
       }
 //--------------------------------------------------------------
@@ -58,22 +58,22 @@ public class ArrayQuick3
       {
       int center = (left+right)/2;
                                        // order left & center
-      if( theArray[left] > theArray[center] )
+      if( theArray[left].getRut() > theArray[center].getRut() )
          swap(left, center);
                                        // order left & right
-      if( theArray[left] > theArray[right] )
+      if( theArray[left].getRut() > theArray[right].getRut() )
          swap(left, right);
                                        // order center & right
-      if( theArray[center] > theArray[right] )
+      if( theArray[center].getRut() > theArray[right].getRut() )
          swap(center, right);
 
       swap(center, right-1);           // put pivot on right
-      return theArray[right-1];        // return median value
+      return theArray[right-1].getRut();        // return median value
       }  // end medianOf3()
 //--------------------------------------------------------------
    public void swap(int dex1, int dex2)  // swap two elements
       {
-      long temp = theArray[dex1];        // A into temp
+      Estudiante temp = theArray[dex1];        // A into temp
       theArray[dex1] = theArray[dex2];   // B into A
       theArray[dex2] = temp;             // temp into B
       }  // end swap(
@@ -84,9 +84,9 @@ public class ArrayQuick3
        int rightPtr = right - 1;       // left of pivot
        while(true)
           {
-          while( theArray[++leftPtr] < pivot )  // find bigger
+          while( theArray[++leftPtr].getRut() < pivot )  // find bigger
              ;                                  // (nop)
-          while( theArray[--rightPtr] > pivot ) // find smaller
+          while( theArray[--rightPtr].getRut() > pivot ) // find smaller
              ;                                  // (nop)
           if(leftPtr >= rightPtr)      // if pointers cross,
              break;                    //    partition done
@@ -104,10 +104,10 @@ public class ArrayQuick3
                                        //  sorted on left of out
       for(out=left+1; out<=right; out++)
          {
-         long temp = theArray[out];    // remove marked item
+         Estudiante temp = theArray[out];    // remove marked item
          in = out;                     // start shifts at out
                                        // until one is smaller,
-         while(in>left && theArray[in-1] >= temp)
+         while(in>left && theArray[in-1].getRut() >= temp.getRut())
             {
             theArray[in] = theArray[in-1]; // shift item to right
             --in;                      // go left one position
@@ -115,5 +115,4 @@ public class ArrayQuick3
          theArray[in] = temp;          // insert marked item
          }  // end for
       }  // end insertionSort()
-//--------------------------------------------------------------
    }
