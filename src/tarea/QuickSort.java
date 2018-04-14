@@ -9,9 +9,9 @@ package tarea;
  *
  * @author Vicente
  */
-public class ArrayQuick3
+public class QuickSort
    {
-   private long[] theArray;          // ref to array theArray
+   private Estudiante[] theArray;          // ref to array theArray
    private int nElems;               // number of data items
 //--------------------------------------------------------------
    public QuickSort(int max)          // constructor
